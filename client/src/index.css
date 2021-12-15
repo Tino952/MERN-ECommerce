@@ -1,0 +1,16 @@
+main {
+  min-height: 80vh;
+}
+
+.rating span {
+  margin-left: 0.1rem;
+}
+
+.btn-light {
+  border: 1px solid;
+  border-color: transparent;
+}
+
+.btn-light:hover {
+  border-color: #55595c78;
+}
