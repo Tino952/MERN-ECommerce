@@ -1,4 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import axios from "axios";
 import {
   Row,
   Col,
@@ -8,15 +10,23 @@ import {
   Card,
   ListGroupItem,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
 
 const Productpage = () => {
-  const params = useParams();
-  const product = products.find((product) => product._id === params.id);
-  const inStock = product.countInStock > 0;
+  const [product, setProduct] = useState({ value: "", text: "" });
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [id]);
+
+  const inStock = product && product.countInStock > 0;
+
   return (
     <Row className="justify-content-center">
       <Col>
