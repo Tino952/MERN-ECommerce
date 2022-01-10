@@ -34,15 +34,12 @@ app.get("/api/config/paypal", (req, res) =>
 );
 
 if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "/client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-} else {
   app.get("/", (req, res) => {
     res.send("API is running");
   });
+} else {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "/client/build")));
 }
 
 app.use(URLNotFound);
