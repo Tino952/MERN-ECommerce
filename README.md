@@ -22,7 +22,7 @@ Click on individual product items to navigate to the product detail landing page
 
 For a list of dependencies please refer to the package.JSON file.
 
-[To the app](link)
+[To the app](https://proshop-952.herokuapp.com/)
 
 Cheers!
 
