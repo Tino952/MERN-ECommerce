@@ -27,6 +27,7 @@ const Cartpage = () => {
   const { id } = useParams();
   let quantity = searchParams.get("quantity");
   const cart = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     if (id) {
@@ -43,7 +44,7 @@ const Cartpage = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    user ? navigate("/shipping") : navigate("/login");
   };
 
   return (

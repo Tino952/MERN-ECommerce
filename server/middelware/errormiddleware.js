@@ -1,5 +1,6 @@
 const URLNotFound = (req, res, next) => {
   console.log("url not found");
+  console.log(req.body);
   console.log(res.statusCode);
   const error = new Error(`${req.originalUrl} - page not found`);
   res.status(400);
